@@ -1,0 +1,5 @@
+---
+file_name: "my_struct_single_db_link_malformed_read"
+# The file number_wrapper_malformed cannot be deserialized, hence deserializing this should result in an error
+my_number:
+  file_name: "number_wrapper_malformed"

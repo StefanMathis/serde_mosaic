@@ -1,0 +1,9 @@
+---
+file_name: my_struct_with_linked_fields_doubly_wrapped
+my_struct_wrapper:
+  file_name: test_wrapper_nested
+  my_struct:
+    my_number:
+      file_name: number_wrapper
+my_second_number:
+  file_name: number_wrapper

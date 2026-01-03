@@ -1,0 +1,10 @@
+---
+file_name: "my_struct_multiple_arcs_linked"
+my_first_arc_number:
+  file_name: "number_wrapper_arc"
+my_second_arc_number:
+  file_name: "number_wrapper_arc"
+my_third_arc_number:
+  file_name: "number_wrapper_arc"
+my_fourth_arc_number:
+  file_name: "number_wrapper"

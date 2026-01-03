@@ -1,0 +1,4 @@
+---
+file_name: "my_struct_single_db_link_read"
+my_number:
+  file_name: "number_wrapper"

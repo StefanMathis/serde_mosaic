@@ -1,0 +1,4 @@
+---
+file_name: "number_wrapper_malformed"
+# The deserializer expects a float here, but we purposefully provide a string here to provoke an error
+val: "42.0"

@@ -1,0 +1,4 @@
+---
+file_name: "my_struct"
+my_arc_number:
+  file_name: "number_wrapper_arc"

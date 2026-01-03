@@ -1,0 +1,5 @@
+---
+file_name: my_struct_link_overwrite
+my_number:
+  file_name: number_wrapper_overwrite
+  file_checksum: 2304774445

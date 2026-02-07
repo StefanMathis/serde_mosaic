@@ -1,5 +1,0 @@
----
-file_name: "my_struct_flat"
-my_number:
-  file_name: "Test"
-  val: 42.0

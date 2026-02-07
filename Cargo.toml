@@ -1,12 +1,16 @@
 [package]
-name = "shared_arc_db"
+name = "serde_mosaic"
 version = "0.1.0"
 edition = "2024"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Composable serialization and deserialization for Rust structs."
+readme = "README.md"
+license  = "MIT OR Apache-2.0"
+repository = "https://github.com/StefanMathis/serde_mosaic.git"
 
 [dependencies]
 serde = { version = "1", features = ["derive", "rc"] }
+typetag = {version = "0.2"}
+dyn-clone = "1"
 deserialize_untagged_verbose_error = { path = "../deserialize_untagged_verbose_error"}
 serde_yaml = {version = "0.8", optional = true}
 serde_json = {version = "1", optional = true}
@@ -14,11 +18,14 @@ utilities = { path = "../utilities"}
 adler32 = {version = "1"}
 
 [features]
-default = ["yaml"]
-yaml = ["dep:serde_yaml"]
-json = ["dep:serde_json"]
+serde_yaml = ["dep:serde_yaml"]
+serde_json = ["dep:serde_json"]
 
 [dev-dependencies]
 approx = { package = "approxim", version = "0.6" }
-indoc = "1.0"
-shared_arc_db = { path = "." }
+indoc = "2.0"
+serde_mosaic = { path = ".", features = ["serde_yaml"] }
+
+[package.metadata.docs.rs]
+features = ["serde_yaml", "serde_json"]
+rustdoc-args = ["--cfg", "docsrs"]

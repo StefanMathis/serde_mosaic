@@ -1,0 +1,7 @@
+---
+Shovel:
+  name: shovel
+  shaft:
+    name: wood
+  blade:
+    name: steel

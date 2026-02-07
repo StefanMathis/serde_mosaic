@@ -1,0 +1,5 @@
+---
+Material:
+  name: "bad_file"
+  # The deserializer expects an usize here, but we purposefully provide a string here to provoke an error
+  id: "42.0"

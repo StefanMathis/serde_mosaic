@@ -1,0 +1,11 @@
+---
+Stool:
+  name: stool
+  leg_1:
+    name: steel
+  leg_2:
+    name: steel
+  leg_3:
+    name: steel
+  seat:
+    name: wood

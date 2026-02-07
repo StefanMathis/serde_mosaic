@@ -11,10 +11,9 @@ repository = "https://github.com/StefanMathis/serde_mosaic.git"
 serde = { version = "1", features = ["derive", "rc"] }
 typetag = {version = "0.2"}
 dyn-clone = "1"
-deserialize_untagged_verbose_error = { path = "../deserialize_untagged_verbose_error"}
+deserialize_untagged_verbose_error = { version = "0.1.5"}
 serde_yaml = {version = "0.8", optional = true}
 serde_json = {version = "1", optional = true}
-utilities = { path = "../utilities"}
 adler32 = {version = "1"}
 
 [features]

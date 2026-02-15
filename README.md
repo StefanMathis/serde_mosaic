@@ -23,7 +23,7 @@ Composable serialization and deserialization for Rust structs.
 This crate allows a composed struct to be serialized into the serialized forms
 of its individual components. Likewise, a composed struct can be deserialized
 from multiple serialized component forms. This enables sharing serialized
-components across multiple composed structs --even of different types -- and 
+components across multiple composed structs – even of different types – and 
 reduces duplication when the serialized data is stored in a database.
 
 Currently, only a file-system based database type is available, but the concept

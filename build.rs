@@ -14,9 +14,6 @@ fn main() {
             .as_str(),
     );
 
-    // Generate README_local.md using local images
-    std::fs::write("README_local.md", readme.clone()).unwrap();
-
-    // Generate README.md using online hosted images
+    // Generate README.md
     std::fs::write("README.md", readme).unwrap();
 }

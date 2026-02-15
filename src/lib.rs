@@ -1,5 +1,4 @@
-#![cfg_attr(docsrs, doc = include_str!("../README.md"))]
-#![cfg_attr(not(docsrs), doc = include_str!("../README_local.md"))]
+#![doc = include_str!("../README.md")]
 #![deny(missing_docs)]
 
 pub mod attributes;

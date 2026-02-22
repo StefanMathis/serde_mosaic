@@ -35,8 +35,8 @@ This crate builds on Serde but is not affiliated with the Serde project.
 
 # An introductory example
 
-Suppose we have a `Shirt` type. Shirts of the same type share the same material,
-but can have different owners and sizes:
+Suppose we have a `Shirt` struct which holds the name of its owner, its
+`Material` and its size. Its `Material` is a cotton-linen blend:
 
 ```rust
 struct Material {

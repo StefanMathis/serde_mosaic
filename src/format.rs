@@ -13,7 +13,7 @@ use std::error::Error;
 use std::ffi::OsStr;
 
 use dyn_clone::DynClone;
-#[cfg(feature = "serde_yaml")]
+
 use serde::de::DeserializeOwned;
 
 use crate::DatabaseEntry;

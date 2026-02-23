@@ -932,7 +932,7 @@ impl DatabaseManager {
     This function first derives the full file path name by concatenating
     `self.dir()`, the name of `T` (see [`type_name`]) and by combining `name`
     and `self.file_ext` to the file name. If this file exists, its content is
-    then deserialized using [`Format::deserialize`] of `self.data_format()`.
+    then deserialized using [`Format::deserialize_dyn`] of `self.data_format()`.
     Any encountered links are resolved by reading the corresponding files and
     storing the resulting object within the created `T` instance.
 
@@ -1001,10 +1001,58 @@ impl DatabaseManager {
 
     This function behaves similarily to [`DatabaseManager::read`], except that
     the starting point is not a file from the database, but `str` instead.
+    Because the [`Format`] is stored as a trait object inside `self`, it needs
+    to be downcasted into its concrete type `F` inside this function. Specifying
+    the wrong type will result in an error.
+
+    # Examples
+
+    ```no_run
+    use std::ffi::OsStr;
+    use std::sync::Arc;
+
+    use serde::{Serialize, Deserialize};
+    use serde_mosaic::*;
+
+    #[derive(Serialize, Deserialize, Clone)]
+    struct Material {
+        name: String,
+        cotton_content: f64,
+    }
+
+    #[typetag::serde]
+    impl DatabaseEntry for Material {
+        fn name(&self) -> &OsStr {
+            self.name.as_ref()
+        }
+    }
+
+    #[derive(Deserialize)]
+    struct Shirt {
+        owner: String,
+        #[serde(deserialize_with = "deserialize_arc_link")]
+        #[serde(serialize_with = "serialize_arc_link")]
+        material: Arc<Material>,
+        size: usize
+    }
+
+    let mut dbm = DatabaseManager::new("/path/to/db", SerdeYaml).expect("directory exists");
+
+    let shirt_str = indoc::indoc! {"
+    ---
+    owner: Sven
+    material:
+      name: pure_cotton
+    size: 46
+    "};
+
+    let shirt = dbm.from_str::<Shirt, SerdeYaml>(&shirt_str).unwrap();
+    assert_eq!(shirt.material.name, "pure_cotton");
+    ```
      */
-    pub fn from_str<T: DeserializeOwned + 'static, S: AsRef<str>>(
+    pub fn from_str<T: DeserializeOwned + 'static, F: Format>(
         &mut self,
-        str: S,
+        str: impl AsRef<str>,
     ) -> std::io::Result<T> {
         READ_CONTEXT.with(|thread_context| {
             // Context only exist for the duration of this function call.
@@ -1015,28 +1063,23 @@ impl DatabaseManager {
 
             let dbm = unsafe { &mut *context.database_manager };
 
-            let result = match dbm.format.deserialize(str.as_ref().as_bytes()) {
-                Ok(val) => {
-                    let val = val as Box<dyn Any>;
-                    match val.downcast() {
-                        Ok(val) => *val,
-                        Err(_) => {
-                            return Err(std::io::Error::new(
-                                std::io::ErrorKind::InvalidData,
-                                format!("type is not {}", type_name::<T>()),
-                            ));
-                        }
-                    }
-                }
-                Err(msg) => Err(std::io::Error::new(
-                    std::io::ErrorKind::InvalidData,
-                    msg.to_string(),
-                )),
-            };
+            // Try to downcast the format into F
+            let format: &F =
+                (dbm.format.as_ref() as &dyn Any)
+                    .downcast_ref()
+                    .ok_or(std::io::Error::new(
+                        std::io::ErrorKind::InvalidData,
+                        "given type F does not match the format of self",
+                    ))?;
+
+            let result = format
+                .deserialize::<T>(str.as_ref().as_bytes())
+                .map_err(|e| std::io::Error::new(std::io::ErrorKind::InvalidData, e))?;
+
             // Remove the thread context
             thread_context.set(None);
 
-            result
+            Ok(result)
         })
     }
 }
@@ -1098,7 +1141,7 @@ impl WriteContext {
         // Self::write, which would lead to aliasing mutable pointers.
         let data = dbm
             .format
-            .serialize(instance)
+            .serialize_dyn(instance)
             .map_err(|err| std::io::Error::new(ErrorKind::Other, err))?;
 
         let mut name = write_options.name(instance);
@@ -1226,7 +1269,7 @@ impl ReadContext {
         // Reading from the cache failed => read directly from the file
         let data = fs::read(file_path.as_path())?;
 
-        match dbm.format.deserialize(&data) {
+        match dbm.format.deserialize_dyn(&data) {
             Ok(val) => {
                 let val = val as Box<dyn Any>;
                 match val.downcast::<T>() {

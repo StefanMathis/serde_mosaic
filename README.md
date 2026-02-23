@@ -5,16 +5,16 @@ serde_mosaic
 [`typetag`]: https://docs.rs/typetag/latest/typetag/
 [`serialize_with`]: https://serde.rs/field-attrs.html#serialize_with
 [`deserialize_with`]: https://serde.rs/field-attrs.html#deserialize_with
-[`DatabaseEntry`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/database_manager/trait.DatabaseEntry.html
-[`DatabaseManager`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/database_manager/struct.DatabaseManager.html
-[`DatabaseManager::file_ext`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/database_manager/struct.DatabaseManager.html#method.file_ext
-[`serialize_link`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/attributes/fn.serialize_link.html
-[`deserialize_link`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/attributes/fn.deserialize_link.html
-[`serialize_arc_link`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/attributes/fn.serialize_arc_link.html
-[`deserialize_arc_link`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/attributes/fn.deserialize_arc_link.html
-[`SerdeYaml`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/format/struct.SerdeYaml.html
-[`SerdeJson`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/format/struct.SerdeJson.html
-[`Format`]: https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/format/trait.Format.html
+[`DatabaseEntry`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/database_manager/trait.DatabaseEntry.html
+[`DatabaseManager`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/database_manager/struct.DatabaseManager.html
+[`DatabaseManager::file_ext`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/database_manager/struct.DatabaseManager.html#method.file_ext
+[`serialize_link`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/attributes/fn.serialize_link.html
+[`deserialize_link`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/attributes/fn.deserialize_link.html
+[`serialize_arc_link`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/attributes/fn.serialize_arc_link.html
+[`deserialize_arc_link`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/attributes/fn.deserialize_arc_link.html
+[`SerdeYaml`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/format/struct.SerdeYaml.html
+[`SerdeJson`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/format/struct.SerdeJson.html
+[`Format`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/format/trait.Format.html
 [`serde_json`]: https://docs.rs/serde_json/latest/serde_json/
 [`serde_yaml`]: https://docs.rs/serde_yaml/latest/serde_yaml/
 
@@ -387,4 +387,4 @@ understand how to work with this crate.
 # Documentation
 
 The full API documentation is available at
-[https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/](https://docs.rs/serde_mosaic/0.1.0/serde_mosaic/).
+[https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/](https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/).

@@ -13,6 +13,8 @@ use std::error::Error;
 use std::ffi::OsStr;
 
 use dyn_clone::DynClone;
+#[cfg(feature = "serde_yaml")]
+use serde::de::DeserializeOwned;
 
 use crate::DatabaseEntry;
 
@@ -96,13 +98,15 @@ pub trait Format: DynClone + std::any::Any {
     };
 
     let format = SerdeYaml {};
-    let bytes = format.serialize(&pure_cotton).expect("must succeed");
+    let bytes = format.serialize_dyn(&pure_cotton).expect("must succeed");
     let reconstructed_string = String::from_utf8(bytes).
         expect("is valid utf8 because the bytes come from a string");
     ```
      */
-    fn serialize(&self, value: &dyn DatabaseEntry)
-    -> Result<Vec<u8>, Box<dyn Error + Send + Sync>>;
+    fn serialize_dyn(
+        &self,
+        value: &dyn DatabaseEntry,
+    ) -> Result<Vec<u8>, Box<dyn Error + Send + Sync>>;
 
     /**
     Deserializes a [`DatabaseEntry`] trait object from a serialized bytes
@@ -152,16 +156,31 @@ pub trait Format: DynClone + std::any::Any {
     };
 
     let format = SerdeYaml {};
-    let bytes = format.serialize(&pure_cotton).expect("must succeed");
-    let boxed_mat = format.deserialize(&bytes).expect("must succeed") as Box<dyn Any>;
+    let bytes = format.serialize_dyn(&pure_cotton).expect("must succeed");
+    let boxed_mat = format.deserialize_dyn(&bytes).expect("must succeed") as Box<dyn Any>;
     let reconstructed_mat: Cloth = *boxed_mat.downcast().expect("is material");
     assert_eq!(pure_cotton, reconstructed_mat);
     ```
      */
-    fn deserialize(
+    fn deserialize_dyn(
         &self,
         bytes: &[u8],
     ) -> Result<Box<dyn DatabaseEntry>, Box<dyn Error + Send + Sync>>;
+
+    /**
+    Deserializes any type `T` implementing [`DeserializeOwned`].
+
+    This function is used inside
+    [`DatabaseManager::from_str`](crate::DatabaseManager::from_str) to enable
+    the deserialization of types which contain linked fields. `T` doesn't need
+    to implement [`DatabaseEntry`] itself.
+     */
+    fn deserialize<T: DeserializeOwned>(
+        &self,
+        bytes: &[u8],
+    ) -> Result<T, Box<dyn Error + Send + Sync>>
+    where
+        Self: Sized;
 }
 
 dyn_clone::clone_trait_object!(Format);
@@ -185,7 +204,7 @@ impl Format for SerdeYaml {
         return OsStr::new("yaml");
     }
 
-    fn serialize(
+    fn serialize_dyn(
         &self,
         value: &dyn DatabaseEntry,
     ) -> Result<Vec<u8>, Box<dyn Error + Send + Sync>> {
@@ -193,10 +212,19 @@ impl Format for SerdeYaml {
         return Ok(value.into_bytes());
     }
 
-    fn deserialize(
+    fn deserialize_dyn(
         &self,
         bytes: &[u8],
     ) -> Result<Box<dyn DatabaseEntry>, Box<dyn Error + Send + Sync>> {
+        let str = std::str::from_utf8(bytes)?;
+        let value = serde_yaml::from_str(str)?;
+        return Ok(value);
+    }
+
+    fn deserialize<T: DeserializeOwned>(
+        &self,
+        bytes: &[u8],
+    ) -> Result<T, Box<dyn Error + Send + Sync>> {
         let str = std::str::from_utf8(bytes)?;
         let value = serde_yaml::from_str(str)?;
         return Ok(value);
@@ -222,7 +250,7 @@ impl Format for SerdeJson {
         return OsStr::new("json");
     }
 
-    fn serialize(
+    fn serialize_dyn(
         &self,
         value: &dyn DatabaseEntry,
     ) -> Result<Vec<u8>, Box<dyn Error + Send + Sync>> {
@@ -230,10 +258,19 @@ impl Format for SerdeJson {
         return Ok(value.into_bytes());
     }
 
-    fn deserialize(
+    fn deserialize_dyn(
         &self,
         bytes: &[u8],
     ) -> Result<Box<dyn DatabaseEntry>, Box<dyn Error + Send + Sync>> {
+        let str = std::str::from_utf8(bytes)?;
+        let value = serde_json::from_str(str)?;
+        return Ok(value);
+    }
+
+    fn deserialize<T: DeserializeOwned>(
+        &self,
+        bytes: &[u8],
+    ) -> Result<T, Box<dyn Error + Send + Sync>> {
         let str = std::str::from_utf8(bytes)?;
         let value = serde_json::from_str(str)?;
         return Ok(value);

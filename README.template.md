@@ -20,6 +20,10 @@ serde_mosaic
 
 Composable serialization and deserialization for Rust structs.
 
+> **Feedback welcome!**  
+> Found a bug, missing docs, or have a feature request?  
+> Please open an issue on GitHub.
+
 This crate allows a composed struct to be serialized into the serialized forms
 of its individual components. Likewise, a composed struct can be deserialized
 from multiple serialized component forms. This enables sharing serialized

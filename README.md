@@ -18,7 +18,15 @@ serde_mosaic
 [`serde_json`]: https://docs.rs/serde_json/latest/serde_json/
 [`serde_yaml`]: https://docs.rs/serde_yaml/latest/serde_yaml/
 
+[![Documentation](https://docs.rs/serde_mosaic/badge.svg)](https://docs.rs/serde_mosaic)
+
 Composable serialization and deserialization for Rust structs.
+
+The full API documentation is available at https://docs.rs/serde_mosaic/0.2.0/serde_mosaic.
+
+> **Feedback welcome!**  
+> Found a bug, missing docs, or have a feature request?  
+> Please open an issue on GitHub.
 
 This crate allows a composed struct to be serialized into the serialized forms
 of its individual components. Likewise, a composed struct can be deserialized

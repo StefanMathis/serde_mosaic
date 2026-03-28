@@ -24,8 +24,8 @@ A trait defining the serialization / deserialization strategy used by a
 
 Implementors of this trait are used to construct
 [`DatabaseManager`](crate::DatabaseManager) instances. Within the database
-manager, the [`serialize`](Format::serialize) and
-[`deserialize`](Format::deserialize) methods are used whenever the manager needs
+manager, the [`serialize`](Format::serialize_dyn) and
+[`deserialize`](Format::deserialize_dyn) methods are used whenever the manager needs
 to serialize / deserialize a struct or one of its components (e.g. when it
 encounters a struct field annotated by one of the "link" attributes from
 [`attributes`](crate::attributes)).
@@ -187,7 +187,7 @@ dyn_clone::clone_trait_object!(Format);
 
 /**
 A [`Format`] which uses [`serde_yaml`] for its implementation of
-[`Format::serialize`] and [`Format::deserialize`]. The file extension is "yaml".
+[`Format::serialize_dyn`] and [`Format::serialize_dyn`]. The file extension is "yaml".
 
 This is a zero-sized struct which does not contain any data, it is purely used
 as a "marker" to tell a [`DatabaseManager`](crate::DatabaseManager) how a
@@ -233,7 +233,7 @@ impl Format for SerdeYaml {
 
 /**
 A [`Format`] which uses [`serde_json`] for its implementation of
-[`Format::serialize`] and [`Format::deserialize`]. The file extension is "json".
+[`Format::serialize_dyn`] and [`Format::deserialize_dyn`]. The file extension is "json".
 
 This is a zero-sized struct which does not contain any data, it is purely used
 as a "marker" to tell a [`DatabaseManager`](crate::DatabaseManager) how a

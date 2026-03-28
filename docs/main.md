@@ -1,32 +1,6 @@
-serde_mosaic
-============
-
-[`serde`]: https://serde.rs
-[`typetag`]: https://docs.rs/typetag/latest/typetag/
-[`serialize_with`]: https://serde.rs/field-attrs.html#serialize_with
-[`deserialize_with`]: https://serde.rs/field-attrs.html#deserialize_with
-[`DatabaseEntry`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/database_manager/trait.DatabaseEntry.html
-[`DatabaseManager`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/database_manager/struct.DatabaseManager.html
-[`DatabaseManager::file_ext`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/database_manager/struct.DatabaseManager.html#method.file_ext
-[`serialize_link`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/attributes/fn.serialize_link.html
-[`deserialize_link`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/attributes/fn.deserialize_link.html
-[`serialize_arc_link`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/attributes/fn.serialize_arc_link.html
-[`deserialize_arc_link`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/attributes/fn.deserialize_arc_link.html
-[`SerdeYaml`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/format/struct.SerdeYaml.html
-[`SerdeJson`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/format/struct.SerdeJson.html
-[`Format`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/format/trait.Format.html
-[`serde_json`]: https://docs.rs/serde_json/latest/serde_json/
-[`serde_yaml`]: https://docs.rs/serde_yaml/latest/serde_yaml/
-
-[![Documentation](https://docs.rs/serde_mosaic/badge.svg)](https://docs.rs/serde_mosaic)
-
-Composable serialization and deserialization for Rust structs.
-
-The full API documentation is available at https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic.
-
 > **Feedback welcome!**  
 > Found a bug, missing docs, or have a feature request?  
-> Please open an issue on GitHub.
+> Please open an issue on [GitHub](https://github.com/StefanMathis/serde_mosaic.git).
 
 This crate allows a composed struct to be serialized into the serialized forms
 of its individual components. Likewise, a composed struct can be deserialized
@@ -391,8 +365,3 @@ examples for `Arc`, `Option` and nested composed structs.
 
 It is recommended to first check out `tests/write.rs` and `tests/read.rs` to
 understand how to work with this crate.
-
-# Documentation
-
-The full API documentation is available at
-[https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/](https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/).

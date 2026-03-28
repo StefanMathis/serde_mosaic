@@ -1,6 +1,10 @@
 serde_mosaic
 ============
 
+<!-- This file has ben generated with build.rs by concatenating docs/links.md,
+docs/main.md and (if available docs/end.md). Do not modify this file, instead
+modify the components. -->
+
 [`serde`]: https://serde.rs
 [`typetag`]: https://docs.rs/typetag/latest/typetag/
 [`serialize_with`]: https://serde.rs/field-attrs.html#serialize_with
@@ -23,10 +27,9 @@ serde_mosaic
 Composable serialization and deserialization for Rust structs.
 
 The full API documentation is available at https://docs.rs/serde_mosaic/0.2.0/serde_mosaic.
-
 > **Feedback welcome!**  
 > Found a bug, missing docs, or have a feature request?  
-> Please open an issue on GitHub.
+> Please open an issue on [GitHub](https://github.com/StefanMathis/serde_mosaic.git).
 
 This crate allows a composed struct to be serialized into the serialized forms
 of its individual components. Likewise, a composed struct can be deserialized
@@ -391,8 +394,3 @@ examples for `Arc`, `Option` and nested composed structs.
 
 It is recommended to first check out `tests/write.rs` and `tests/read.rs` to
 understand how to work with this crate.
-
-# Documentation
-
-The full API documentation is available at
-[https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/](https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/).

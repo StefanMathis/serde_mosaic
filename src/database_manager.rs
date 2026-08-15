@@ -859,7 +859,7 @@ impl DatabaseManager {
     annotated with one of the "link"
     [attributes for serialization](crate::attributes) (depending on the
     [`WriteMode`] of [`WriteOptions`]). Using serialization functions from other
-    packages (as e.g. `serde_yaml::to_string`) bypasses the entire linking
+    packages (as e.g. `yaml_serde::to_string`) bypasses the entire linking
     machinery of this crate and just creates the expected serialized
     representations.
     */
@@ -938,7 +938,7 @@ impl DatabaseManager {
 
     Like [`DatabaseManager::write`], using this function is mandatory in order
     to read files with links in them. Using serialization functions from other
-    packages (as e.g. `serde_yaml::from_str`) bypasses the entire linking
+    packages (as e.g. `yaml_serde::from_str`) bypasses the entire linking
     machinery of this crate and will result in failure if any links are stored
     within the files.
     */

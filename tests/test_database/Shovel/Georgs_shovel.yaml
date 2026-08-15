@@ -1,9 +1,8 @@
----
 Shovel:
   name: Georgs_shovel
   shaft:
     name: Georgs_birch
-    checksum: 94637245
+    checksum: 3990555692
   blade:
     name: Georgs_alloy
-    checksum: 99749079
+    checksum: 3995667526

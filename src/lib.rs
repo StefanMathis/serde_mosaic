@@ -14,7 +14,7 @@
 [`SerdeJson`]: crate::format::SerdeJson
 [`Format`]: crate::format::Format
 [`serde_json`]: https://docs.rs/serde_json/latest/serde_json/
-[`serde_yaml`]: https://docs.rs/serde_yaml/latest/serde_yaml/
+[`yaml_serde`]: https://docs.rs/yaml_serde/latest/yaml_serde/
 
 Composable serialization and deserialization for Rust structs.
 

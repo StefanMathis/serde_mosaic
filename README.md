@@ -9,24 +9,24 @@ modify the components. -->
 [`typetag`]: https://docs.rs/typetag/latest/typetag/
 [`serialize_with`]: https://serde.rs/field-attrs.html#serialize_with
 [`deserialize_with`]: https://serde.rs/field-attrs.html#deserialize_with
-[`DatabaseEntry`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/database_manager/trait.DatabaseEntry.html
-[`DatabaseManager`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/database_manager/struct.DatabaseManager.html
-[`DatabaseManager::file_ext`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/database_manager/struct.DatabaseManager.html#method.file_ext
-[`serialize_link`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/attributes/fn.serialize_link.html
-[`deserialize_link`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/attributes/fn.deserialize_link.html
-[`serialize_arc_link`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/attributes/fn.serialize_arc_link.html
-[`deserialize_arc_link`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/attributes/fn.deserialize_arc_link.html
-[`SerdeYaml`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/format/struct.SerdeYaml.html
-[`SerdeJson`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/format/struct.SerdeJson.html
-[`Format`]: https://docs.rs/serde_mosaic/0.2.0/serde_mosaic/format/trait.Format.html
+[`DatabaseEntry`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/database_manager/trait.DatabaseEntry.html
+[`DatabaseManager`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/database_manager/struct.DatabaseManager.html
+[`DatabaseManager::file_ext`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/database_manager/struct.DatabaseManager.html#method.file_ext
+[`serialize_link`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/attributes/fn.serialize_link.html
+[`deserialize_link`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/attributes/fn.deserialize_link.html
+[`serialize_arc_link`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/attributes/fn.serialize_arc_link.html
+[`deserialize_arc_link`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/attributes/fn.deserialize_arc_link.html
+[`SerdeYaml`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/format/struct.SerdeYaml.html
+[`SerdeJson`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/format/struct.SerdeJson.html
+[`Format`]: https://docs.rs/serde_mosaic/0.3.0/serde_mosaic/format/trait.Format.html
 [`serde_json`]: https://docs.rs/serde_json/latest/serde_json/
-[`serde_yaml`]: https://docs.rs/serde_yaml/latest/serde_yaml/
+[`yaml_serde`]: https://docs.rs/yaml_serde/latest/yaml_serde/
 
 [![Documentation](https://docs.rs/serde_mosaic/badge.svg)](https://docs.rs/serde_mosaic)
 
 Composable serialization and deserialization for Rust structs.
 
-The full API documentation is available at https://docs.rs/serde_mosaic/0.2.0/serde_mosaic.
+The full API documentation is available at https://docs.rs/serde_mosaic/0.3.0/serde_mosaic.
 > **Feedback welcome!**  
 > Found a bug, missing docs, or have a feature request?  
 > Please open an issue on [GitHub](https://github.com/StefanMathis/serde_mosaic.git).
@@ -366,7 +366,7 @@ database entries.
 ## YAML
 
 Enabling the `serde_yaml` feature provides the [`SerdeYaml`] database format.
-This format uses the [`serde_yaml`] crate for serializing and deserializing the
+This format uses the [`yaml_serde`] crate for serializing and deserializing the
 database entries.
 
 # Examples in the `/tests` directory

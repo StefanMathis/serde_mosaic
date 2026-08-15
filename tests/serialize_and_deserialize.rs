@@ -19,9 +19,8 @@ fn test_serialize_and_deserialize() {
             },
         };
 
-        let text = serde_yaml::to_string(&se_shovel).unwrap();
+        let text = yaml_serde::to_string(&se_shovel).unwrap();
         let expected = indoc::indoc! {"
-        ---
         name: shovel
         shaft:
           id: 1
@@ -33,7 +32,7 @@ fn test_serialize_and_deserialize() {
         };
         assert_eq!(text, expected);
 
-        let de_shovel: Shovel = serde_yaml::from_str(&text).unwrap();
+        let de_shovel: Shovel = yaml_serde::from_str(&text).unwrap();
         assert_eq!(se_shovel, de_shovel);
     }
 
@@ -61,9 +60,8 @@ fn test_serialize_and_deserialize_opt() {
             }),
         };
 
-        let text = serde_yaml::to_string(&se_cupboard).unwrap();
+        let text = yaml_serde::to_string(&se_cupboard).unwrap();
         let expected = indoc::indoc! {"
-        ---
         name: cupboard
         cup:
           name: cup
@@ -74,7 +72,7 @@ fn test_serialize_and_deserialize_opt() {
         };
         assert_eq!(text, expected);
 
-        let de_cupboard: Cupboard = serde_yaml::from_str(&text).unwrap();
+        let de_cupboard: Cupboard = yaml_serde::from_str(&text).unwrap();
         assert_eq!(se_cupboard, de_cupboard);
     }
 

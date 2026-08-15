@@ -186,7 +186,7 @@ pub trait Format: DynClone + std::any::Any {
 dyn_clone::clone_trait_object!(Format);
 
 /**
-A [`Format`] which uses [`serde_yaml`] for its implementation of
+A [`Format`] which uses [`yaml_serde`] for its implementation of
 [`Format::serialize_dyn`] and [`Format::serialize_dyn`]. The file extension is "yaml".
 
 This is a zero-sized struct which does not contain any data, it is purely used
@@ -208,7 +208,7 @@ impl Format for SerdeYaml {
         &self,
         value: &dyn DatabaseEntry,
     ) -> Result<Vec<u8>, Box<dyn Error + Send + Sync>> {
-        let value = serde_yaml::to_string(value)?;
+        let value = yaml_serde::to_string(value)?;
         return Ok(value.into_bytes());
     }
 
@@ -217,7 +217,7 @@ impl Format for SerdeYaml {
         bytes: &[u8],
     ) -> Result<Box<dyn DatabaseEntry>, Box<dyn Error + Send + Sync>> {
         let str = std::str::from_utf8(bytes)?;
-        let value = serde_yaml::from_str(str)?;
+        let value = yaml_serde::from_str(str)?;
         return Ok(value);
     }
 
@@ -226,7 +226,7 @@ impl Format for SerdeYaml {
         bytes: &[u8],
     ) -> Result<T, Box<dyn Error + Send + Sync>> {
         let str = std::str::from_utf8(bytes)?;
-        let value = serde_yaml::from_str(str)?;
+        let value = yaml_serde::from_str(str)?;
         return Ok(value);
     }
 }

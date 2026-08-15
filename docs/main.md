@@ -337,7 +337,7 @@ database entries.
 ## YAML
 
 Enabling the `serde_yaml` feature provides the [`SerdeYaml`] database format.
-This format uses the [`serde_yaml`] crate for serializing and deserializing the
+This format uses the [`yaml_serde`] crate for serializing and deserializing the
 database entries.
 
 # Examples in the `/tests` directory

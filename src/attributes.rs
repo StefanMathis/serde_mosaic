@@ -46,8 +46,8 @@ impl DatabaseEntry for Shirt {
 
 In order to use them, the field type needs to implement [`DatabaseEntry`].
 When serializing and deserializing "directly" (e.g. with
-`serde_yaml::to_string` provided by the
-[`serde_yaml`](https://docs.rs/serde_yaml/latest/serde_yaml/) crate), these
+`yaml_serde::to_string` provided by the
+[`yaml_serde`](https://docs.rs/yaml_serde/latest/yaml_serde/) crate), these
 functions are basically no-ops and behave as if the attribute wasn't there
 (i.e., a "normal" serialization / deserialization of the field is performed).
 However, if using [`DatabaseManager::write`](crate::DatabaseManager::write) the

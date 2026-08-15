@@ -20,7 +20,7 @@ modify the components. -->
 [`SerdeJson`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/format/struct.SerdeJson.html
 [`Format`]: https://docs.rs/serde_mosaic/{{VERSION}}/serde_mosaic/format/trait.Format.html
 [`serde_json`]: https://docs.rs/serde_json/latest/serde_json/
-[`serde_yaml`]: https://docs.rs/serde_yaml/latest/serde_yaml/
+[`yaml_serde`]: https://docs.rs/yaml_serde/latest/yaml_serde/
 
 [![Documentation](https://docs.rs/serde_mosaic/badge.svg)](https://docs.rs/serde_mosaic)
 

@@ -1,6 +1,6 @@
 [package]
 name = "serde_mosaic"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
 description = "Composable serialization and deserialization for Rust structs."
 readme = "README.md"
@@ -12,12 +12,12 @@ serde = { version = "1", features = ["derive", "rc"] }
 typetag = {version = "0.2"}
 dyn-clone = "1"
 deserialize_untagged_verbose_error = { version = "0.1.5"}
-serde_yaml = {version = "0.8", optional = true}
+yaml_serde = {version = "0.10.6", optional = true}
 serde_json = {version = "1", optional = true}
 adler32 = {version = "1"}
 
 [features]
-serde_yaml = ["dep:serde_yaml"]
+serde_yaml = ["dep:yaml_serde"]
 serde_json = ["dep:serde_json"]
 
 [dev-dependencies]

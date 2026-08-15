@@ -3,8 +3,8 @@ All database entries belonging to this test have a prepending 02.
  */
 
 use serde_mosaic::*;
-use serde_yaml::Value;
 use std::{ptr, sync::Arc};
+use yaml_serde::Value;
 
 mod utilities;
 use utilities::*;
@@ -86,12 +86,12 @@ fn test_read_arc_link_reuse() {
     {
         let file_path = dbm.full_path(&shovel).expect("exists");
         let contents = std::fs::read_to_string(&file_path).expect("readable");
-        let mut file: Value = serde_yaml::from_str(&contents).expect("valid yaml");
+        let mut file: Value = yaml_serde::from_str(&contents).expect("valid yaml");
         let old_val = file["Shovel"]["shaft"]["checksum"]
             .as_i64()
             .expect("is integer");
         file["Shovel"]["shaft"]["checksum"] = Value::from(old_val + 1);
-        let updated = serde_yaml::to_string(&file).unwrap();
+        let updated = yaml_serde::to_string(&file).unwrap();
         std::fs::write(&file_path, updated).expect("writable");
     }
 
